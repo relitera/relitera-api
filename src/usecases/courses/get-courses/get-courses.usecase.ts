@@ -8,6 +8,7 @@ export type GetCoursesOutputDto = {
   name: string;
   description: string;
   price: Decimal;
+  id: string;
 }[];
 
 export class GetCoursesUsecase
@@ -39,7 +40,8 @@ export class GetCoursesUsecase
       return {
         name: each.name,
         description: each.description,
-        price: each.price
+        price: each.price,
+        id: each.id
       }
     })
     return output;

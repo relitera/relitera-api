@@ -7,6 +7,7 @@ export type GetCoursesResponseDto = {
   name: string;
   description: string;
   price: Decimal;
+  id: string;
 }[];
 
 export class GetCoursesRoute implements Route {
