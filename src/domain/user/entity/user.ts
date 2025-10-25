@@ -150,6 +150,17 @@ export class User {
       );
       missingParamError.throwErr();
     }
+
+    if (!this.props.birthdate) {
+      const missingParamError = MissingParamError.create(
+        'Birthdate not provided',
+        undefined,
+        400,
+        'birthdate',
+      );
+      missingParamError.throwErr();
+    }
+
     if (!this.props.token || this.props.token.length <= 0) {
       const missingParamError = MissingParamError.create(
         'Token not provided',

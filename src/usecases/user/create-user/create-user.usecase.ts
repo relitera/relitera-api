@@ -77,6 +77,16 @@ export class CreateUserUsecase
       invalidParamError.throwErr();
     }
 
+    if (!userData.birthdate) {
+      const missingParamError = MissingParamError.create(
+        'Birthdate not provided',
+        'Birthdate not provided',
+        400,
+        'birthdate',
+      );
+      missingParamError.throwErr();
+    }
+
     const birthdateParsed = new Date(userData.birthdate)
 
     const aUser = User.create(
