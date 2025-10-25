@@ -7,6 +7,7 @@ export type UserProps = {
   email: string;
   password: string;
   token: string;
+  birthdate: Date;
 };
 
 export class User {
@@ -18,6 +19,7 @@ export class User {
     name: string,
     email: string,
     password: string,
+    birthdate: Date,
     token: string,
   ) {
     return new User({
@@ -25,6 +27,7 @@ export class User {
       name,
       email,
       password,
+      birthdate,
       token,
     });
   }
@@ -47,6 +50,10 @@ export class User {
 
   public get password() {
     return this.props.password;
+  }
+
+  public get birthdate() {
+    return this.props.birthdate
   }
 
   public get token() {

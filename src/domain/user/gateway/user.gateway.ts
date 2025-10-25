@@ -7,6 +7,7 @@ export interface UserGateway {
         email: string;
         name: string;
         password: string;
+        birthdate: Date | null;
         token: string;
     }>
     findById(id: string): Promise<{
@@ -14,6 +15,7 @@ export interface UserGateway {
         email: string;
         name: string;
         password: string;
+        birthdate: Date | null;
         token: string;
     }>
     deleteByEmail(email: string): Promise<{
