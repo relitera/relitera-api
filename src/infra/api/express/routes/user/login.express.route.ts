@@ -10,6 +10,7 @@ export type LoginUserResponseDto = {
   name: string;
   email: string;
   token: string;
+  birthdate: Date | null;
   id: string;
 };
 
@@ -83,6 +84,7 @@ export class LoginUserRoute implements Route {
       email: input.email,
       token: input.token,
       id: input.id,
+      birthdate: input.birthdate
     };
     return response;
   }

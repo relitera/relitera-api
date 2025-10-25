@@ -16,6 +16,7 @@ export type LoginOutputDto = {
   email: string;
   id: string;
   token: string;
+  birthdate: Date | null;
 };
 
 export class LoginUserUsecase
@@ -103,7 +104,7 @@ export class LoginUserUsecase
   }
 
   private presentOutput(
-    user: { email: string; password: string; name: string; id: string },
+    user: { birthdate: Date | null; email: string; password: string; name: string; id: string },
     token: string,
   ): LoginOutputDto {
     const output: LoginOutputDto = {
@@ -111,6 +112,7 @@ export class LoginUserUsecase
       name: user.name,
       id: user.id,
       token: token,
+      birthdate: user.birthdate
     };
 
     return output;
