@@ -15,6 +15,7 @@ export class UserRepositoryPrisma implements UserGateway {
       email: user.email,
       name: user.name,
       password: user.password,
+      birthdate: user.birthdate,
       token: user.token
     };
 
@@ -30,6 +31,7 @@ export class UserRepositoryPrisma implements UserGateway {
     email: string;
     name: string;
     password: string;
+    birthdate: Date | null;
     token: string;
   }> {
     const user = await this.prismaClient.users.findUnique({
@@ -43,6 +45,7 @@ export class UserRepositoryPrisma implements UserGateway {
       email: user && user.email ? user.email : '',
       name: user && user.name ? user.name : '',
       password: user && user.password ? user.password : '',
+      birthdate: user ? user.birthdate : null,
       token: user && user.token ? user.token : ''
     };
   }
@@ -54,6 +57,7 @@ export class UserRepositoryPrisma implements UserGateway {
     email: string;
     name: string;
     password: string;
+    birthdate: Date | null;
     token: string;
   }> {
     const user = await this.prismaClient.users.findUnique({
@@ -65,6 +69,7 @@ export class UserRepositoryPrisma implements UserGateway {
       email: user && user.email ? user.email : '',
       name: user && user.name ? user.name : '',
       password: user && user.password ? user.password : '',
+      birthdate: user ? user.birthdate : null,
       token: user && user.token ? user.token : ''
     };
   }

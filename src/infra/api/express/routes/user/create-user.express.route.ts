@@ -7,6 +7,7 @@ export type CreateUserResponseDto = {
   email: string;
   id: string;
   token: string;
+  birthdate: Date;
 };
 
 export class CreateUserRoute implements Route {
@@ -23,6 +24,7 @@ export class CreateUserRoute implements Route {
   public getHandler() {
     return async (request: Request, response: Response) => {
       try {
+        console.log(request.body)
         const body = request.body;
 
         const input: CreateUserInputDto = body;
@@ -59,7 +61,8 @@ export class CreateUserRoute implements Route {
       name: input.name,
       email: input.email,
       id: input.id,
-      token: input.token
+      token: input.token,
+      birthdate: input.birthdate
     };
     return response;
   }

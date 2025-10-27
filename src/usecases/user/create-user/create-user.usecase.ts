@@ -11,6 +11,7 @@ export type CreateUserInputDto = {
   name: string;
   email: string;
   password: string;
+  birthdate: string;
 };
 
 export type CreateUserOutputDto = {
@@ -18,6 +19,7 @@ export type CreateUserOutputDto = {
   email: string;
   id: string;
   token: string;
+  birthdate: Date;
 };
 
 export class CreateUserUsecase
@@ -75,10 +77,23 @@ export class CreateUserUsecase
       invalidParamError.throwErr();
     }
 
+    if (!userData.birthdate) {
+      const missingParamError = MissingParamError.create(
+        'Birthdate not provided',
+        'Birthdate not provided',
+        400,
+        'birthdate',
+      );
+      missingParamError.throwErr();
+    }
+
+    const birthdateParsed = new Date(userData.birthdate)
+
     const aUser = User.create(
       userData.name,
       userData.email.toLowerCase(),
       userData.password,
+      birthdateParsed,
       token,
     );
 
@@ -114,6 +129,7 @@ export class CreateUserUsecase
       name: user.name,
       id: user.id,
       token: user.token,
+      birthdate: user.birthdate
     };
 
     return output;
