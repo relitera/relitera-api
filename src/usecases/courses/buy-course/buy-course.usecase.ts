@@ -34,7 +34,7 @@ export class BuyCourseUsecase
         missingParamError.throwErr()
     }
 
-    const courseCreated = await this.coursesGateway.buyCourse();
+    const courseCreated = await this.coursesGateway.buyCourse(user_id, course_id);
 
     if (!courseCreated) {
         const missingParamError = MissingParamError.create(
