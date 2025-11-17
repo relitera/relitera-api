@@ -15,9 +15,19 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
     description: string;
     price: Decimal;
   }[]> {
-  
     const courses = await this.prismaClient.courses.findMany()
 
     return courses
+  }
+
+  public async buyCourse(userId: string, courseId: string): Promise<boolean> {
+    await this.prismaClient.user_courses.create({
+      data: {
+        user_id: userId,
+        course_id: courseId
+      }
+    })
+    
+    return true
   }
 }

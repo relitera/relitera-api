@@ -8,4 +8,5 @@ export interface CoursesGateway {
         description: string;
         price: Decimal;
     }[]>
+    buyCourse(userId: string, courseId: string): Promise<boolean>
 }
