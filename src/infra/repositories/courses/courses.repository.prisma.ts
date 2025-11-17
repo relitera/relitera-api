@@ -30,4 +30,17 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
     
     return true
   }
+
+  public async getUserCourses(userId: string): Promise<any> {
+    const courses = await this.prismaClient.user_courses.findMany({
+      where: {
+        user_id: userId
+      },
+      include: {
+        courses: true
+      }
+    });
+    
+    return courses
+  }
 }
