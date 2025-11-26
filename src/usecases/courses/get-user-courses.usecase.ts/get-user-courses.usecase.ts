@@ -32,6 +32,7 @@ export class GetUserCoursesUsecase
     
     const coursesFound = await this.coursesGateway.getUserCourses(user_id);
 
+
     const output = this.presentOutput(coursesFound);
 
     return output;

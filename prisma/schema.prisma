@@ -12,6 +12,7 @@ model courses {
   name         String         @db.VarChar(255)
   description  String
   price        Decimal        @db.Decimal(10, 2)
+  thumb_url    String?
   user_courses user_courses[]
 }
 

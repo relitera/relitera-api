@@ -16,7 +16,7 @@ export class GetUserCoursesRoute implements Route {
 
   public static create(getUserCoursesService: GetUserCoursesUsecase) {
     return new GetUserCoursesRoute(
-      '/courses',
+      '/courses/user',
       HttpMethod.GET,
       getUserCoursesService,
     );
@@ -26,12 +26,18 @@ export class GetUserCoursesRoute implements Route {
     return async (request: Request, response: Response) => {
       try {
         const params: GetUserCoursesInputDto = {
-          user_id: request.params.user_id,
+          user_id: request.query.user_id as string,
         };
+
+        console.log(request)
+
+        console.log(params)
 
         const output = await this.getUserCoursesService.execute(params);
 
-        const responseBody = this.present(output);
+        const validData = output.map((each: any) => each.courses)
+
+        const responseBody = this.present(validData);
         response.status(200).json(responseBody);
       } catch (err: any) {
         console.log(err);

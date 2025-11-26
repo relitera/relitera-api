@@ -47,7 +47,7 @@ export class BuyCourseUsecase
     }
 
     const output = this.presentOutput({
-        message: "Curso comprado com sucesso",
+        message: "Curso(s) comprado(s) com sucesso!",
         success: true
     });
 
