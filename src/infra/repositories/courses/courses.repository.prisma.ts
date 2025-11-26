@@ -52,6 +52,9 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
       where: {
         course_id: courseId
       },
+      orderBy: {
+        created_at: "asc"
+      }
     })
 
     return classes
