@@ -20,13 +20,15 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
     return courses
   }
 
-  public async buyCourse(userId: string, courseId: string): Promise<boolean> {
-    await this.prismaClient.user_courses.create({
-      data: {
+  public async buyCourse(userId: string, courseIds: string[]): Promise<boolean> {
+    await this.prismaClient.user_courses.createMany({
+      data: courseIds.map((courseId) => ({
         user_id: userId,
-        course_id: courseId
-      }
-    })
+        course_id: courseId,
+      })),
+      skipDuplicates: true, 
+    });
+
     
     return true
   }

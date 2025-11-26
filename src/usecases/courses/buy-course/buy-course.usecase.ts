@@ -3,7 +3,7 @@ import { MissingParamError } from '../../../errors/MissingParamError';
 import { Usecase } from '../../usecase';
 
 export type BuyCourseInputDto = {
-    course_id: string;
+    course_ids: string[];
     user_id: string;
 };
 
@@ -22,9 +22,9 @@ export class BuyCourseUsecase
   }
 
   public async execute(body: BuyCourseInputDto) {
-    const { user_id, course_id } = body
+    const { user_id, course_ids } = body
 
-    if (!user_id || !course_id) {
+    if (!user_id || !course_ids) {
         const missingParamError = MissingParamError.create(
             "Some param missing",
             "Um erro ocorreu. Tente novamente mais tarde",
@@ -34,7 +34,7 @@ export class BuyCourseUsecase
         missingParamError.throwErr()
     }
 
-    const courseCreated = await this.coursesGateway.buyCourse(user_id, course_id);
+    const courseCreated = await this.coursesGateway.buyCourse(user_id, course_ids);
 
     if (!courseCreated) {
         const missingParamError = MissingParamError.create(
