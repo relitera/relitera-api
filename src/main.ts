@@ -2,6 +2,7 @@ import config from './config/config';
 import { prisma } from './config/db/prisma/prisma';
 import { ApiExpress } from './infra/api/express/api.express';
 import { BuyCourseRoute } from './infra/api/express/routes/courses/buy-course.express.route';
+import { GetClassesByCourseRoute } from './infra/api/express/routes/courses/get-classes-by-course.express.route';
 import { GetCoursesRoute } from './infra/api/express/routes/courses/get-courses.express.route';
 import { GetUserCoursesRoute } from './infra/api/express/routes/courses/get-user-courses.express.route';
 import { RootRoute } from './infra/api/express/routes/root/root.express.route';
@@ -12,6 +13,7 @@ import { CoursesRepositoryPrisma } from './infra/repositories/courses/courses.re
 
 import { UserRepositoryPrisma } from './infra/repositories/user/user.repository.prisma';
 import { BuyCourseUsecase } from './usecases/courses/buy-course/buy-course.usecase';
+import { GetClassesByCourseUsecase } from './usecases/courses/get-classes-by-course/get-classes-by-course.usecase';
 import { GetCoursesUsecase } from './usecases/courses/get-courses/get-courses.usecase';
 import { GetUserCoursesUsecase } from './usecases/courses/get-user-courses.usecase.ts/get-user-courses.usecase';
 import { CreateUserUsecase } from './usecases/user/create-user/create-user.usecase';
@@ -58,6 +60,9 @@ function main() {
   const getUserCoursesUsecase = GetUserCoursesUsecase.create(coursesRepository)
   const getUserCoursesRoute = GetUserCoursesRoute.create(getUserCoursesUsecase)
 
+  const getClassesByCourseUsecase = GetClassesByCourseUsecase.create(coursesRepository)
+  const getClassesByRoute = GetClassesByCourseRoute.create(getClassesByCourseUsecase)
+
   const api = ApiExpress.create([
     rootRoute,
     createRoute,
@@ -65,7 +70,8 @@ function main() {
     loginRoute,
     getAllCoursesRoute,
     buyCourseRoute,
-    getUserCoursesRoute
+    getUserCoursesRoute,
+    getClassesByRoute
   ]);
 
   const port = config.port

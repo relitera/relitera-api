@@ -46,4 +46,14 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
     
     return courses
   }
+
+  public async getClassesByCourse(courseId: string): Promise<{ name: string; description: string; duration_sec: number; video_url: string; done: boolean; }[]> {
+    const classes = await this.prismaClient.course_classes.findMany({
+      where: {
+        course_id: courseId
+      },
+    })
+
+    return classes
+  }
 }
