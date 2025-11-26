@@ -122,7 +122,7 @@ export class User {
     if (!this.props.email || this.props.email.length <= 0) {
       const missingParamError = MissingParamError.create(
         'Email not provided',
-        'Please provide your email',
+        'Por favor forneça um email',
         400,
         'Email',
       );
@@ -144,7 +144,7 @@ export class User {
     if (!this.props.name || this.props.name.length <= 0) {
       const missingParamError = MissingParamError.create(
         'Name not provided',
-        'Please provide your name',
+        'Por favor forneça seu nome',
         400,
         'Name',
       );
@@ -153,7 +153,7 @@ export class User {
 
     if (!this.props.birthdate) {
       const missingParamError = MissingParamError.create(
-        'Birthdate not provided',
+        'Por favor forneça sua data de nascimento',
         undefined,
         400,
         'birthdate',
