@@ -14,9 +14,10 @@ export class CoursesRepositoryPrisma implements CoursesGateway {
     name: string;
     description: string;
     price: Decimal;
+    thumb_url: string | null;
   }[]> {
     const courses = await this.prismaClient.courses.findMany()
-
+    console.log(courses)
     return courses
   }
 

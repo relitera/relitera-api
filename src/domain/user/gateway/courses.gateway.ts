@@ -7,6 +7,7 @@ export interface CoursesGateway {
         name: string;
         description: string;
         price: Decimal;
+        thumb_url: string | null;
     }[]>
     buyCourse(userId: string, courseIds: string[]): Promise<boolean>
     getUserCourses(userId: string): Promise<any>
