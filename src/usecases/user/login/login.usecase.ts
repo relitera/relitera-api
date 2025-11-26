@@ -82,8 +82,8 @@ export class LoginUserUsecase
 
     if (!passwordsMatch) {
       const invalidParamError = InvalidParamError.create(
-        'Email or password invalid.',
-        "Email or password user provided is invalid",
+        'Email ou senha incorretos.',
+        "Email ou senha incorretos",
         400,
         'Email or password',
       );

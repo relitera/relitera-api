@@ -72,47 +72,47 @@ export class User {
     if (password.length < 8) {
       return {
         success: false,
-        message: 'Password must be at least 8 characters long',
+        message: 'A senha precisa ter pelo menos 8 caracteres',
       };
     }
 
     if (password.length > 64) {
       return {
         success: false,
-        message: 'Password must not exceed 64 characters',
+        message: 'A senha deve ter um máximo de 64 caracteres',
       };
     }
 
     if (!/[A-Z]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one uppercase letter',
+        message: 'A senha deve ter uma letra maiúscula',
       };
     }
 
     if (!/[a-z]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one lowercase letter',
+        message: 'A senha deve ter uma letra minúscula',
       };
     }
 
     if (!/[0-9]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one number',
+        message: 'A senha deve ter pelo menos um númerp',
       };
     }
 
     if (!/[!@#$%^&*(),.?":{}|<>_\-+=\\[\];'`~]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one special character',
+        message: 'A senha deve ter um caractere especial',
       };
     }
 
     if (/^\s+$/.test(password)) {
-      return { success: false, message: 'Password cannot be only spaces.' };
+      return { success: false, message: 'A senha está vazia.' };
     }
 
     return { success: true, message: 'Password is valid.' };
