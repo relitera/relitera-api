@@ -100,7 +100,7 @@ export class User {
     if (!/[0-9]/.test(password)) {
       return {
         success: false,
-        message: 'A senha deve ter pelo menos um númerp',
+        message: 'A senha deve ter pelo menos um número',
       };
     }
 

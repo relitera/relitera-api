@@ -57,7 +57,7 @@ export class CreateUserUsecase
 
     if (!userData.email) {
       const missingParamError = MissingParamError.create(
-        'Email not provided',
+        'Forneça um email',
         'Please provide your email',
         400,
         'Email',
@@ -69,7 +69,7 @@ export class CreateUserUsecase
 
     if (userFound.id && userFound.id.length) {
       const invalidParamError = InvalidParamError.create(
-        'Account already exists',
+        'Essa conta já existe',
         'User provided an email thats already linked to an account',
         400,
         'Email',
@@ -79,8 +79,8 @@ export class CreateUserUsecase
 
     if (!userData.birthdate) {
       const missingParamError = MissingParamError.create(
-        'Birthdate not provided',
-        'Birthdate not provided',
+        'Forneça a data de nascimento',
+        'Forneça a data de nascimento',
         400,
         'birthdate',
       );
@@ -108,7 +108,7 @@ export class CreateUserUsecase
 
     if (!isEmailValid) {
       const invalidParamError = InvalidParamError.create(
-        'Please provide a valid email',
+        'Forneça um email válido',
         'User provided invalid email',
         400,
         'Email',
