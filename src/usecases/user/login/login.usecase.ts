@@ -67,7 +67,7 @@ export class LoginUserUsecase
 
     if (!userFound.email.length) {
       const noRecordsFoundError = NoRecordsFoundError.create(
-        "User account not found",
+        "Essa conta não existe",
         'Account not found',
         400,
         'user',
