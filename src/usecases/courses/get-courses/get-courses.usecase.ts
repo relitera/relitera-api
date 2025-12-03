@@ -9,6 +9,7 @@ export type GetCoursesOutputDto = {
   description: string;
   price: Decimal;
   id: string;
+  thumb_url: string | null;
 }[];
 
 export class GetCoursesUsecase
@@ -34,6 +35,7 @@ export class GetCoursesUsecase
       name: string;
       description: string;
       price: Decimal;
+      thumb_url: string | null;
     }[],
   ): GetCoursesOutputDto {
     const output = data.map((each) => {
@@ -41,7 +43,8 @@ export class GetCoursesUsecase
         name: each.name,
         description: each.description,
         price: each.price,
-        id: each.id
+        id: each.id,
+        thumb_url: each.thumb_url
       }
     })
     return output;

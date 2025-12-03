@@ -8,11 +8,13 @@ datasource db {
 }
 
 model courses {
-  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name         String         @db.VarChar(255)
-  description  String
-  price        Decimal        @db.Decimal(10, 2)
-  user_courses user_courses[]
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String           @db.VarChar(255)
+  description    String
+  price          Decimal          @db.Decimal(10, 2)
+  thumb_url      String?
+  course_classes course_classes[]
+  user_courses   user_courses[]
 }
 
 model user_courses {
@@ -33,4 +35,16 @@ model users {
   token        String?        @db.VarChar(325)
   birthdate    DateTime?      @db.Date
   user_courses user_courses[]
+}
+
+model course_classes {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String    @db.VarChar(500)
+  description  String
+  duration_sec Int
+  course_id    String    @db.Uuid
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  video_url    String
+  done         Boolean   @default(false)
+  courses      courses   @relation(fields: [course_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }

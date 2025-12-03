@@ -72,47 +72,47 @@ export class User {
     if (password.length < 8) {
       return {
         success: false,
-        message: 'Password must be at least 8 characters long',
+        message: 'A senha precisa ter pelo menos 8 caracteres',
       };
     }
 
     if (password.length > 64) {
       return {
         success: false,
-        message: 'Password must not exceed 64 characters',
+        message: 'A senha deve ter um máximo de 64 caracteres',
       };
     }
 
     if (!/[A-Z]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one uppercase letter',
+        message: 'A senha deve ter uma letra maiúscula',
       };
     }
 
     if (!/[a-z]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one lowercase letter',
+        message: 'A senha deve ter uma letra minúscula',
       };
     }
 
     if (!/[0-9]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one number',
+        message: 'A senha deve ter pelo menos um número',
       };
     }
 
     if (!/[!@#$%^&*(),.?":{}|<>_\-+=\\[\];'`~]/.test(password)) {
       return {
         success: false,
-        message: 'Password must contain at least one special character',
+        message: 'A senha deve ter um caractere especial',
       };
     }
 
     if (/^\s+$/.test(password)) {
-      return { success: false, message: 'Password cannot be only spaces.' };
+      return { success: false, message: 'A senha está vazia.' };
     }
 
     return { success: true, message: 'Password is valid.' };
@@ -122,7 +122,7 @@ export class User {
     if (!this.props.email || this.props.email.length <= 0) {
       const missingParamError = MissingParamError.create(
         'Email not provided',
-        'Please provide your email',
+        'Por favor forneça um email',
         400,
         'Email',
       );
@@ -144,7 +144,7 @@ export class User {
     if (!this.props.name || this.props.name.length <= 0) {
       const missingParamError = MissingParamError.create(
         'Name not provided',
-        'Please provide your name',
+        'Por favor forneça seu nome',
         400,
         'Name',
       );
@@ -153,7 +153,7 @@ export class User {
 
     if (!this.props.birthdate) {
       const missingParamError = MissingParamError.create(
-        'Birthdate not provided',
+        'Por favor forneça sua data de nascimento',
         undefined,
         400,
         'birthdate',
