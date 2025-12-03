@@ -20,10 +20,6 @@ export class DeleteUserRoute implements Route {
     return new DeleteUserRoute('/user/:email', HttpMethod.DELETE, deleteUserService);
   }
 
-  public getMiddlewares() {
-    return [userAccessMiddleware]
-  }
-
   public getHandler() {
     return async (request: Request, response: Response) => {
       try {
